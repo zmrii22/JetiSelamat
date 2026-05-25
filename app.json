@@ -1,0 +1,64 @@
+{
+  "expo": {
+    "name": "JetiSelamat",
+    "slug": "jetiselamat",
+    "owner": "zmri22",
+    "scheme": "jetiselamat",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000080"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "JetiSelamat needs camera access to capture hazard evidence photos.",
+        "NSPhotoLibraryUsageDescription": "JetiSelamat needs photo library access to attach hazard evidence.",
+        "NSFaceIDUsageDescription": "JetiSelamat uses Face ID to secure login autofill."
+      }
+    },
+    "android": {
+      "package": "com.zmri22.jetiselamat",
+      "googleServicesFile": "./google-services.json",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "POST_NOTIFICATIONS",
+        "CAMERA",
+        "READ_MEDIA_IMAGES"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b722bb92-1370-47dc-b743-fb1b3070d5eb"
+      }
+    },
+    "plugins": [
+      "expo-secure-store",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow JetiSelamat to access your photos for hazard evidence.",
+          "cameraPermission": "Allow JetiSelamat to use your camera for hazard evidence."
+        }
+      ],
+      "expo-notifications",
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
