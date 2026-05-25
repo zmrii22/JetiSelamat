@@ -1,7 +1,11 @@
-﻿const CLOUD_NAME = process.env.EXPO_PUBLIC_CLOUDINARY_CLOUD_NAME ?? 'dhpwe3zna';
-const UNSIGNED_PRESET = process.env.EXPO_PUBLIC_CLOUDINARY_UNSIGNED_PRESET ?? 'JetiSelamat';
+const CLOUD_NAME = process.env.EXPO_PUBLIC_CLOUDINARY_CLOUD_NAME ?? '';
+const UNSIGNED_PRESET = process.env.EXPO_PUBLIC_CLOUDINARY_UNSIGNED_PRESET ?? '';
 
 export const muatNaikImejCloudinary = async (uri: string) => {
+  if (!CLOUD_NAME || !UNSIGNED_PRESET) {
+    throw new Error('Konfigurasi Cloudinary belum lengkap.');
+  }
+
   const formData = new FormData();
   formData.append('upload_preset', UNSIGNED_PRESET);
   formData.append('file', {

@@ -24,20 +24,17 @@ import {
 } from '../types';
 
 const firebaseConfig = {
-  apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY ?? 'AIzaSyBzYPbl2l_gPvyoJEx6AQ9gN9RP8718ZJo',
-  authDomain: process.env.EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN ?? 'jetiselamat-mobile-app.firebaseapp.com',
-  databaseURL:
-    process.env.EXPO_PUBLIC_FIREBASE_DATABASE_URL ??
-    'https://jetiselamat-mobile-app-default-rtdb.asia-southeast1.firebasedatabase.app',
-  projectId: process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID ?? 'jetiselamat-mobile-app',
-  storageBucket:
-    process.env.EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET ?? 'jetiselamat-mobile-app.firebasestorage.app',
-  messagingSenderId: process.env.EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID ?? '261354298623',
-  appId: process.env.EXPO_PUBLIC_FIREBASE_APP_ID ?? '1:261354298623:web:dd599064efd5c286cec0ca',
+  apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY ?? '',
+  authDomain: process.env.EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN ?? '',
+  databaseURL: process.env.EXPO_PUBLIC_FIREBASE_DATABASE_URL ?? '',
+  projectId: process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID ?? '',
+  storageBucket: process.env.EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET ?? '',
+  messagingSenderId: process.env.EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID ?? '',
+  appId: process.env.EXPO_PUBLIC_FIREBASE_APP_ID ?? '',
 };
 
-export const MASTER_ADMIN_EMAIL = 'zamrihamzah22@gmail.com';
-export const MASTER_ADMIN_PASSWORD = 'Zmrih_29';
+export const MASTER_ADMIN_EMAIL = (process.env.EXPO_PUBLIC_MASTER_ADMIN_EMAIL ?? '').trim().toLowerCase();
+export const MASTER_ADMIN_PASSWORD = process.env.EXPO_PUBLIC_MASTER_ADMIN_PASSWORD ?? '';
 
 const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
 export const auth = getAuth(app);
@@ -72,7 +69,9 @@ const toList = <T extends { id: string }>(value: Record<string, Omit<T, 'id'>> |
 };
 
 const isMasterCredential = (email: string, password: string) =>
-  email.trim().toLowerCase() === MASTER_ADMIN_EMAIL && password === MASTER_ADMIN_PASSWORD;
+  Boolean(MASTER_ADMIN_EMAIL && MASTER_ADMIN_PASSWORD) &&
+  email.trim().toLowerCase() === MASTER_ADMIN_EMAIL &&
+  password === MASTER_ADMIN_PASSWORD;
 
 const normalizeJetty = (value?: string) => {
   if (!value) return '';

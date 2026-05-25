@@ -51,10 +51,10 @@ JetiSelamat membantu staf pemeriksaan, admin jeti, dan master admin mengurus lap
 - `admin` -> aplikasi admin
 - `master_admin` -> aplikasi master admin
 
-Akaun master admin tetap:
+Akaun master admin boleh ditetapkan melalui `.env`:
 
-- Email: `zamrihamzah22@gmail.com`
-- Password: `Zmrih_29`
+- `EXPO_PUBLIC_MASTER_ADMIN_EMAIL`
+- `EXPO_PUBLIC_MASTER_ADMIN_PASSWORD`
 
 ## Struktur Ringkas Projek
 
